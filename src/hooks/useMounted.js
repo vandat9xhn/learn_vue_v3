@@ -1,8 +1,17 @@
-import { ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 //
-const useMounted = () => {
+function useMounted() {
     const mounted = ref(false);
+
+    onMounted(() => {
+        handleMounted();
+    });
+    onBeforeUnmount(() => {
+        handleUnmounted();
+    });
+
+    // ----
 
     const handleMounted = () => {
         mounted.value = true;
@@ -16,9 +25,9 @@ const useMounted = () => {
 
     return {
         mounted,
-        handleMounted,
-        handleUnmounted,
+        // handleMounted,
+        // handleUnmounted,
     };
-};
+}
 
 export default useMounted;

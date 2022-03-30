@@ -1,5 +1,5 @@
 <template>
-    <button class="BtnRounded" type="button" v-bind="btn_props">
+    <button :class="class_btn" type="button" v-bind="btn_props">
         <slot></slot>
     </button>
 </template>
@@ -8,7 +8,17 @@
 export default {
     name: 'BtnRounded',
     props: {
-        btn_props: Object,
+        btn_props: {
+            default() {
+                return {};
+            },
+            type: Object,
+        },
+    },
+    data() {
+        return {
+            class_btn: 'BtnRounded',
+        };
     },
 };
 </script>

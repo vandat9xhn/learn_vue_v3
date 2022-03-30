@@ -28,6 +28,18 @@ export default {
     components: {
         HelloWorld,
     },
+    provide() {
+        return {
+            user: {
+                first_name: 'Nguyen',
+                last_name: 'My',
+                city: 'HN',
+            },
+        };
+    },
+    methods: {},
+    //
+    mounted() {},
 };
 </script>
 

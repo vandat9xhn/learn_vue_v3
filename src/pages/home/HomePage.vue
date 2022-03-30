@@ -10,7 +10,13 @@
 
     <!-- ref -->
     <div class="home_part">
-        <BtnRounded :btn_props="{ type: 'button', onclick: handleFocusIpFile }">
+        <BtnRounded
+            :btn_props="{
+                class: 'home_ref-btn',
+                type: 'button',
+                onclick: handleFocusIpFile,
+            }"
+        >
             Choose file
         </BtnRounded>
 
@@ -96,12 +102,10 @@ export default {
         },
     },
     mounted() {
-        this.mounted_obj.handleMounted();
         console.log(this.mounted_obj.mounted.value);
     },
 
     beforeUnmount() {
-        this.mounted_obj.handleUnmounted();
         console.log(this.mounted_obj.mounted.value);
     },
 };
