@@ -17,6 +17,9 @@
 
     <!-- store -->
     <div @click="handleCountUp">Count up {{ count }}</div>
+
+    <div>Shop Count cart {{ shop.count_cart }}</div>
+    <div @click="handleCountUpCart">Count cart +1</div>
 </template>
 
 <script>
@@ -34,7 +37,10 @@ export default {
     },
     computed: {
         count() {
-            return store.state.count;
+            return store.state.common.count;
+        },
+        shop() {
+            return store.state.shop;
         },
     },
     //
@@ -55,10 +61,14 @@ export default {
         handleCountUp() {
             store.commit('countUp');
         },
+        handleCountUpCart() {
+            store.commit('changeCountCart', store.state.shop.count_cart + 1);
+        },
     },
     //
     mounted() {
         this.changeCompanyName();
+        store.dispatch('fetchCountCart');
     },
     beforeRouteLeave(to, from, next) {
         console.log(to, from);

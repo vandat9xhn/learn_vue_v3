@@ -17,6 +17,10 @@
         <router-link to="/about"> Go to About </router-link>
     </div>
 
+    <div>
+        <router-link to="/user"> Go to User </router-link>
+    </div>
+
     <router-view></router-view>
 </template>
 
