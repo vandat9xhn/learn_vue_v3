@@ -21,6 +21,10 @@
         <router-link to="/user"> Go to User </router-link>
     </div>
 
+    <div>
+        <router-link to="/post/1"> Go to Post </router-link>
+    </div>
+
     <router-view></router-view>
 </template>
 

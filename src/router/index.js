@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const HomePage = () => import('../pages/home/HomePage');
 const AboutPage = () => import('../pages/about/AboutPage');
+const PostPage = () => import('../pages/post/PostPage');
 //
 const UserPage = () => import('../pages/user/_main/UserPage');
 const UserHomePage = () => import('../pages/user/home/UserHomePage');
@@ -20,6 +21,7 @@ const routes = [
             { path: 'profile', component: UserProfilePage },
         ],
     },
+    { path: '/post/:id', component: PostPage },
 ];
 
 export const router = createRouter({
