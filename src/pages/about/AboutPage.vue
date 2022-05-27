@@ -20,6 +20,18 @@
 
     <div>Shop Count cart {{ shop.count_cart }}</div>
     <div @click="handleCountUpCart">Count cart +1</div>
+
+    <teleport v-if="show_modal" to="#portal">
+        <div class="about-portal">
+            <div>
+                <button type="button" @click="leaveRoute">Yes</button>
+            </div>
+
+            <div>
+                <button type="button" @click="closeModal">No</button>
+            </div>
+        </div>
+    </teleport>
 </template>
 
 <script>
@@ -33,6 +45,8 @@ export default {
     data() {
         return {
             company_name: '',
+            show_modal: false,
+            _next: (is_next = true) => {},
         };
     },
     computed: {
@@ -64,6 +78,15 @@ export default {
         handleCountUpCart() {
             store.commit('changeCountCart', store.state.shop.count_cart + 1);
         },
+
+        //
+        leaveRoute() {
+            this._next();
+        },
+        closeModal() {
+            this._next(false);
+            this.show_modal = false;
+        },
     },
     //
     mounted() {
@@ -71,12 +94,8 @@ export default {
         store.dispatch('fetchCountCart');
     },
     beforeRouteLeave(to, from, next) {
-        console.log(to, from);
-        if (confirm()) {
-            next();
-        } else {
-            next(false);
-        }
+        this.show_modal = true;
+        this._next = next;
     },
     unmounted() {
         // console.log(this.company_name);
@@ -85,8 +104,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.about {
-    padding: 15px;
-}
+<style lang="scss" scoped>
+@import './AboutPage.scss';
 </style>

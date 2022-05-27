@@ -15,6 +15,9 @@ const routes = [
     {
         path: '/user',
         component: UserPage,
+        meta: {
+            auth: true,
+        },
         children: [
             { path: '', component: UserHomePage },
             { path: 'post', component: UserPostPage },
